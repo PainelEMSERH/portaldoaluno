@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>SIA - Painel de Situação do Aluno</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="page">
+    <div class="app">
+      <header class="app-header">
+        <div class="app-title-block">
+          <div class="app-logo">SIA</div>
+          <div>
+            <div class="app-title">Sistema Integrado Acadêmico</div>
+            <div class="app-subtitle">Painel de Situação do Aluno</div>
+          </div>
+        </div>
+        <div class="app-header-right">
+          <div class="header-user">
+            <span class="header-user-name">Coordenação</span>
+            <span class="header-user-role">Acesso institucional</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="app-main">
+        <section class="panel">
+          <div class="panel-header">
+            <div>
+              <h1 class="panel-title">Situação acadêmica consolidada</h1>
+              <p class="panel-subtitle">
+                Painel único para conferência final da matriz curricular do aluno. 
+                Preencha os campos abaixo e gere o registro para conferência.
+              </p>
+            </div>
+            <div class="status-badge" contenteditable="true">
+              Curso concluído · Apto(a) à colação de grau
+            </div>
+          </div>
+
+          <!-- IDENTIFICAÇÃO DO ALUNO -->
+          <section class="card student-card">
+            <div class="student-main">
+              <div class="student-avatar">
+                <span contenteditable="true">AE</span>
+              </div>
+              <div class="student-text">
+                <h2 class="student-name" contenteditable="true">Aluno Exemplo</h2>
+                <p class="student-course" contenteditable="true">
+                  Bacharelado em Engenharia Civil
+                </p>
+                <div class="student-meta">
+                  <span contenteditable="true">Matrícula: 1234567</span>
+                  <span contenteditable="true">CPF: 000.000.000-00</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="student-info-grid">
+              <div class="info-item">
+                <div class="info-label">Situação acadêmica</div>
+                <div class="info-value" contenteditable="true">
+                  Curso concluído. Todas as disciplinas obrigatórias e exigências curriculares foram integralizadas com aprovação.
+                </div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Status para colação de grau</div>
+                <div class="info-value" contenteditable="true">
+                  Apto(a) à colação de grau, condicionado apenas ao cumprimento dos procedimentos administrativos internos.
+                </div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Observações da coordenação</div>
+                <div class="info-value" contenteditable="true">
+                  Sem pendências acadêmicas registradas pela coordenação de curso.
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- PENDÊNCIAS NA MATRIZ -->
+          <section class="card single-row-card">
+            <div class="single-row-label">Pendências na matriz curricular</div>
+            <div class="single-row-value no-pending" contenteditable="true">
+              Nenhuma pendência acadêmica, documental ou de carga horária identificada para este aluno na matriz curricular.
+            </div>
+          </section>
+
+          <!-- DECLARAÇÃO DE APTIDÃO -->
+          <section class="card declaration-card">
+            <h3 contenteditable="true">Declaração de aptidão à colação de grau</h3>
+            <p contenteditable="true">
+              Após conferência dos registros acadêmicos deste sistema, declara-se que o(a) aluno(a) acima identificado(a)
+              possui a matriz curricular integralizada, com aprovação em todas as disciplinas previstas para o curso,
+              incluindo, quando aplicável, estágio obrigatório, atividades complementares e Trabalho de Conclusão de Curso.
+            </p>
+            <p contenteditable="true">
+              Dessa forma, o(a) discente encontra-se <strong>apto(a) à colação de grau</strong>, estando sua participação
+              condicionada apenas aos trâmites e prazos administrativos estabelecidos pela instituição.
+            </p>
+          </section>
+
+          <!-- DISCIPLINAS -->
+          <section class="card disciplines-card">
+            <div class="disciplines-header">
+              <div>
+                <h3>Relação de disciplinas integralizadas</h3>
+                <p class="disciplines-subtitle">
+                  Clique nas células para editar código, nome e observações. Utilize os botões para ajustar o número de linhas.
+                </p>
+              </div>
+              <div class="disciplines-actions">
+                <button type="button" id="addRowBtn">+ Adicionar disciplina</button>
+                <button type="button" id="removeRowBtn">Remover última linha</button>
+              </div>
+            </div>
+
+            <div class="table-wrapper">
+              <table class="data-table" id="disciplinesTable">
+                <thead>
+                  <tr>
+                    <th>Código</th>
+                    <th>Nome da disciplina</th>
+                    <th>Observação</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td contenteditable="true">ENG101</td>
+                    <td contenteditable="true">Cálculo Diferencial e Integral I</td>
+                    <td contenteditable="true">Aprovado</td>
+                  </tr>
+                  <tr>
+                    <td contenteditable="true">ENG102</td>
+                    <td contenteditable="true">Geometria Analítica e Álgebra Linear</td>
+                    <td contenteditable="true">Aprovado</td>
+                  </tr>
+                  <tr>
+                    <td contenteditable="true">ENG201</td>
+                    <td contenteditable="true">Física Geral I</td>
+                    <td contenteditable="true">Aprovado</td>
+                  </tr>
+                  <tr>
+                    <td contenteditable="true">ENG202</td>
+                    <td contenteditable="true">Materiais de Construção Civil</td>
+                    <td contenteditable="true">Aprovado</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <p class="print-hint">
+            Após preencher as informações, utilize <strong>Ctrl + P</strong> (ou a opção de impressão do navegador)
+            para gerar o PDF ou captura da tela para envio ao aluno.
+          </p>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const addRowBtn = document.getElementById('addRowBtn');
+    const removeRowBtn = document.getElementById('removeRowBtn');
+    const tableBody = document.querySelector('#disciplinesTable tbody');
+
+    addRowBtn.addEventListener('click', () => {
+      const tr = document.createElement('tr');
+      const cells = [
+        'COD',
+        'Nome da disciplina',
+        'Aprovado'
+      ];
+      cells.forEach(text => {
+        const td = document.createElement('td');
+        td.contentEditable = 'true';
+        td.textContent = text;
+        tr.appendChild(td);
+      });
+      tableBody.appendChild(tr);
+    });
+
+    removeRowBtn.addEventListener('click', () => {
+      const rows = tableBody.querySelectorAll('tr');
+      if (rows.length > 1) {
+        tableBody.removeChild(rows[rows.length - 1]);
+      }
+    });
+  </script>
+</body>
+</html>
