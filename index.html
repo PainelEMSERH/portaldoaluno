@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>SIA - Painel de Situação do Aluno</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <div class="logo-area">
+        <div class="logo-mark">SIA</div>
+        <div class="logo-text">
+          <span class="logo-title">Sistema Integrado Acadêmico</span>
+          <span class="logo-subtitle">Painel de Situação do Aluno</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <div class="user-info">
+          <span class="user-name">Coordenação</span>
+          <span class="user-role">Acesso institucional</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="app-body">
+      <aside class="sidebar">
+        <nav class="menu">
+          <div class="menu-item active">
+            <span class="menu-label">Situação Acadêmica</span>
+          </div>
+        </nav>
+      </aside>
+
+      <main class="content">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Situação acadêmica consolidada</h1>
+            <p class="page-subtitle">
+              Painel único para conferência final da matriz curricular do aluno.
+              Preencha diretamente os campos abaixo e gere o print.
+            </p>
+          </div>
+          <div class="status-pill status-aguardando">
+            <span class="dot"></span>
+            <span contenteditable="true">Curso concluído · Aguardando colação de grau</span>
+          </div>
+        </div>
+
+        <section class="section visible">
+          <!-- BLOCO PRINCIPAL DO ALUNO -->
+          <div class="student-header">
+            <div class="student-main">
+              <div class="student-avatar" contenteditable="true">
+                <!-- Edite as iniciais conforme o nome -->
+                <span>AE</span>
+              </div>
+              <div>
+                <!-- NOME DO ALUNO -->
+                <h2 class="student-name" contenteditable="true">
+                  Aluno Exemplo
+                </h2>
+
+                <!-- CURSO -->
+                <p class="student-course" contenteditable="true">
+                  Bacharelado em Engenharia Civil
+                </p>
+
+                <div class="student-meta">
+                  <!-- MATRÍCULA -->
+                  <span contenteditable="true">
+                    Matrícula: <strong>1234567</strong>
+                  </span>
+
+                  <!-- CPF -->
+                  <span contenteditable="true">
+                    CPF: <strong>000.000.000-00</strong>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="student-info-grid">
+              <div class="info-card">
+                <span class="info-label">Situação acadêmica</span>
+                <span class="info-value" contenteditable="true">
+                  Curso concluído. Todas as disciplinas obrigatórias e exigências curriculares
+                  foram integralizadas com aprovação.
+                </span>
+              </div>
+
+              <div class="info-card">
+                <span class="info-label">Status para colação de grau</span>
+                <span class="info-value" contenteditable="true">
+                  Apto(a) à colação de grau, condicionado apenas aos trâmites administrativos
+                  internos da instituição.
+                </span>
+              </div>
+
+              <div class="info-card">
+                <span class="info-label">Observações gerais</span>
+                <span class="info-value" contenteditable="true">
+                  Sem ressalvas acadêmicas registradas pela coordenação de curso.
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- PENDÊNCIAS NA MATRIZ -->
+          <div class="single-summary-row">
+            <div class="summary-card summary-card-full">
+              <span class="summary-label">Pendências na matriz curricular</span>
+              <span class="summary-value summary-ok" contenteditable="true">
+                Nenhuma pendência acadêmica, documental ou de carga horária registrada para este aluno.
+              </span>
+            </div>
+          </div>
+
+          <!-- TEXTO SOBRE COLAÇÃO DE GRAU -->
+          <div class="alert-card">
+            <h3 contenteditable="true">Declaração de aptidão à colação de grau</h3>
+            <p contenteditable="true">
+              Conforme verificação realizada no presente painel, o(a) aluno(a) acima identificado(a)
+              encontra-se com a matriz curricular integralmente cumprida, sem pendências de disciplinas,
+              estágios, atividades complementares ou Trabalho de Conclusão de Curso (quando aplicável).
+            </p>
+            <p contenteditable="true">
+              Diante disso, o(a) discente está <strong>apto(a) à colação de grau</strong>, restando apenas
+              o cumprimento dos procedimentos administrativos internos para participação na próxima cerimônia
+              oficial definida pela instituição.
+            </p>
+          </div>
+
+          <!-- QUADRO PARA CÓDIGOS E NOMES DAS DISCIPLINAS -->
+          <div class="disciplines-card">
+            <div class="disciplines-header">
+              <h3>Relação de disciplinas integralizadas</h3>
+              <p class="disciplines-subtitle">
+                Clique nas células para editar código, nome da disciplina e observações.
+                Use os botões abaixo para adicionar ou remover linhas.
+              </p>
+            </div>
+
+            <div class="disciplines-actions">
+              <button type="button" id="addRowBtn">+ Adicionar disciplina</button>
+              <button type="button" id="removeRowBtn">Remover última linha</button>
+            </div>
+
+            <div class="table-wrapper">
+              <table class="data-table" id="disciplinesTable">
+                <thead>
+                  <tr>
+                    <th>Código</th>
+                    <th>Nome da disciplina</th>
+                    <th>Observação</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td contenteditable="true">ENG101</td>
+                    <td contenteditable="true">Cálculo Diferencial e Integral I</td>
+                    <td contenteditable="true">Aprovado</td>
+                  </tr>
+                  <tr>
+                    <td contenteditable="true">ENG102</td>
+                    <td contenteditable="true">Geometria Analítica e Álgebra Linear</td>
+                    <td contenteditable="true">Aprovado</td>
+                  </tr>
+                  <tr>
+                    <td contenteditable="true">ENG201</td>
+                    <td contenteditable="true">Física Geral I</td>
+                    <td contenteditable="true">Aprovado</td>
+                  </tr>
+                  <tr>
+                    <td contenteditable="true">ENG202</td>
+                    <td contenteditable="true">Materiais de Construção Civil</td>
+                    <td contenteditable="true">Aprovado</td>
+                  </tr>
+                  <tr>
+                    <td contenteditable="true">ENG301</td>
+                    <td contenteditable="true">Trabalho de Conclusão de Curso</td>
+                    <td contenteditable="true">Aprovado</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="print-hint">
+            Dica: depois de preencher tudo, use <strong>Ctrl + P</strong> (ou opção de impressão do navegador)
+            para gerar o PDF ou tirar print da tela.
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    // Adiciona/remover linhas da tabela de disciplinas
+    const addRowBtn = document.getElementById('addRowBtn');
+    const removeRowBtn = document.getElementById('removeRowBtn');
+    const tableBody = document.querySelector('#disciplinesTable tbody');
+
+    addRowBtn.addEventListener('click', () => {
+      const tr = document.createElement('tr');
+      ['Código', 'Nome da disciplina', 'Observação'].forEach((placeholder, index) => {
+        const td = document.createElement('td');
+        td.contentEditable = 'true';
+        td.textContent = index === 0 ? 'COD' : (index === 1 ? 'Nome da disciplina' : 'Aprovado');
+        tr.appendChild(td);
+      });
+      tableBody.appendChild(tr);
+    });
+
+    removeRowBtn.addEventListener('click', () => {
+      const rows = tableBody.querySelectorAll('tr');
+      if (rows.length > 1) {
+        tableBody.removeChild(rows[rows.length - 1]);
+      }
+    });
+  </script>
+</body>
+</html>
