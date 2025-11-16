@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>SIA - Grade do Aluno</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <div class="logo-area">
+        <div class="logo-mark">SIA</div>
+        <div class="logo-text">
+          <span class="logo-title">Sistema Integrado de Atividades</span>
+          <span class="logo-subtitle">Grade do Aluno</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <div class="user-info">
+          <span class="user-name" id="userName">Coordenação</span>
+          <span class="user-role">Acesso institucional</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="app-body">
+      <aside class="sidebar">
+        <nav class="menu">
+          <button class="menu-item active" data-section="overview">
+            <span class="menu-label">Situação Acadêmica</span>
+          </button>
+          <button class="menu-item" data-section="disciplines">
+            <span class="menu-label">Grade / Disciplinas</span>
+          </button>
+          <button class="menu-item" data-section="history">
+            <span class="menu-label">Histórico</span>
+          </button>
+        </nav>
+
+        <div class="student-selector">
+          <label for="studentSelect">Aluno</label>
+          <select id="studentSelect"></select>
+          <small class="hint">Selecione o aluno para carregar os dados</small>
+        </div>
+      </aside>
+
+      <main class="content">
+        <section id="overviewSection" class="section visible">
+          <div class="page-header">
+            <div>
+              <h1 class="page-title">Situação acadêmica consolidada</h1>
+              <p class="page-subtitle">Resumo geral da vida acadêmica do aluno no curso</p>
+            </div>
+            <div class="status-pill status-aguardando">
+              <span class="dot"></span>
+              <span id="statusText">Aguardando colação de grau</span>
+            </div>
+          </div>
+
+          <div class="student-header">
+            <div class="student-main">
+              <div class="student-avatar">
+                <span id="studentInitials">AL</span>
+              </div>
+              <div>
+                <h2 id="studentName" class="student-name">Aluno Exemplo</h2>
+                <p id="courseName" class="student-course">Curso</p>
+                <div class="student-meta">
+                  <span>RA: <strong id="raValue">0000000</strong></span>
+                  <span>Matrícula: <strong id="registrationValue">0000000</strong></span>
+                </div>
+              </div>
+            </div>
+            <div class="student-info-grid">
+              <div class="info-card">
+                <span class="info-label">Período de ingresso</span>
+                <span class="info-value" id="entryPeriod">2020.1</span>
+              </div>
+              <div class="info-card">
+                <span class="info-label">Período previsto de conclusão</span>
+                <span class="info-value" id="completionPeriod">2024.2</span>
+              </div>
+              <div class="info-card">
+                <span class="info-label">Situação atual</span>
+                <span class="info-value info-tag info-tag-success" id="statusBadge">
+                  Aprovado em todas as disciplinas
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cards-grid">
+            <div class="summary-card">
+              <span class="summary-label">Disciplinas cursadas</span>
+              <span class="summary-value" id="totalSubjects">0</span>
+            </div>
+            <div class="summary-card">
+              <span class="summary-label">Carga horária integralizada</span>
+              <span class="summary-value" id="totalHours">0 h</span>
+            </div>
+            <div class="summary-card">
+              <span class="summary-label">Média geral (CRA)</span>
+              <span class="summary-value" id="gpaValue">0,0</span>
+            </div>
+            <div class="summary-card">
+              <span class="summary-label">Pendências na matriz</span>
+              <span class="summary-value summary-ok" id="pendingValue">Nenhuma pendência</span>
+            </div>
+          </div>
+
+          <div class="alert-card">
+            <h3>Aluno apto à colação de grau</h3>
+            <p>
+              Todas as disciplinas da matriz curricular encontram-se com situação
+              <strong>APROVADO</strong>. O aluno não possui pendências acadêmicas ou
+              de carga horária e está apenas <strong>aguardando colação de grau</strong>,
+              conforme registros neste sistema.
+            </p>
+          </div>
+        </section>
+
+        <section id="disciplinesSection" class="section">
+          <div class="page-header">
+            <div>
+              <h1 class="page-title">Grade de disciplinas / histórico de oferta</h1>
+              <p class="page-subtitle">
+                Visualização completa das disciplinas com situação final registrada
+              </p>
+            </div>
+            <div class="filters">
+              <label>
+                Período:
+                <select id="periodFilter"></select>
+              </label>
+              <label>
+                Buscar:
+                <input type="text" id="searchInput" placeholder="Nome ou código da disciplina" />
+              </label>
+            </div>
+          </div>
+
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Período</th>
+                  <th>Código</th>
+                  <th>Disciplina</th>
+                  <th>CH</th>
+                  <th>Nota</th>
+                  <th>Situação</th>
+                  <th>Ano/Sem.</th>
+                </tr>
+              </thead>
+              <tbody id="disciplinesTableBody">
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="historySection" class="section">
+          <div class="page-header">
+            <div>
+              <h1 class="page-title">Histórico acadêmico simplificado</h1>
+              <p class="page-subtitle">Principais marcos da trajetória do aluno no curso</p>
+            </div>
+          </div>
+
+          <ul class="timeline" id="historyTimeline">
+          </ul>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
